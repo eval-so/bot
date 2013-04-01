@@ -12,7 +12,7 @@ class EvalGDBot extends PircBot {
   setLogin("eval-gd")
   setVerbose(true)
   connect("quartz.tenthbit.net", 6667)
-  joinChannel("#codeblock")
+  joinChannel("#programming")
 
   override def onMessage(
     channel: String,
@@ -21,14 +21,14 @@ class EvalGDBot extends PircBot {
     hostname: String,
     message: String) {
 
-    if (message.startsWith("@")) {
+    if (message.startsWith("@@")) {
       message.split(" ", 2) match {
-        case Array(command) => command.drop(1) match {
+        case Array(command) => command.drop(2) match {
           case "help" => sendMessage(channel, "Hi. I'm eval-gd, a product of eval.gd.")
           case _ =>
         }
         case Array(command, arguments) => {
-          Router.route(command.drop(1), arguments) match {
+          Router.route(command.drop(2), arguments) match {
             case Some(sandbox) => sandbox.evaluate.fold(
               exception => sendMessage(channel, "An internal security error has occurred."),
               result => sendMessage(channel, result.toString)
