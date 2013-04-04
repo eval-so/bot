@@ -1,4 +1,4 @@
-name := "eval-gd"
+name := "eval-so"
 
 version := "1.0.0"
 

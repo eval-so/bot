@@ -1,15 +1,15 @@
-package gd.eval.bot
+package so.eval.bot
 import org.jibble.pircbot._
 
-import gd.eval.Router
+import so.eval.Router
 
 object EvalGDBot extends App {
   new EvalGDBot
 }
 
 class EvalGDBot extends PircBot {
-  setName("eval-gd")
-  setLogin("eval-gd")
+  setName("eval-so")
+  setLogin("eval-so")
   setVerbose(true)
   connect("quartz.tenthbit.net", 6667)
   joinChannel("#programming")
@@ -24,7 +24,7 @@ class EvalGDBot extends PircBot {
     if (message.startsWith("@@")) {
       message.split(" ", 2) match {
         case Array(command) => command.drop(2) match {
-          case "help" => sendMessage(channel, "Hi. I'm eval-gd, a product of eval.gd.")
+          case "help" => sendMessage(channel, "Hi. I'm eval-so, a product of eval.so.")
           case _ =>
         }
         case Array(command, arguments) => {
